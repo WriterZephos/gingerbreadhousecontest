@@ -1,0 +1,13 @@
+<article class="entry-content" id="<%= dom_id(entry) %>" data-votes-target="entry" data-participant-id="<%= entry.participant_id %>">
+  <h2 class="entry-title"><%= entry.title%></h2>
+  <div class="entry-slide-show">
+    <% if entry.images.attached? %>
+      <% entry.images.each do |image| %>
+        <div>
+          <%= link_to image_tag(image, width: "100%"), url_for(image) %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <section class="entry-description"><%= entry.description %></section>
+</article>

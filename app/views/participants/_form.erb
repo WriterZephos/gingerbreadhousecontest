@@ -1,0 +1,11 @@
+<%= form_with(model: @participant, url: [@user, @participant], data: { turbo: false }) do |form| %>
+  <%= form.hidden_field :user_id %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GingerBreadContest</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", media: 'all', "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div class="main-grid-container background" data-controller="toggle">
+      <%= turbo_frame_tag("nav", class: "top-nav") do %>
+        <%= render "layouts/top_nav" unless @hide_navigation %>
+      <% end %>
+      <%= turbo_frame_tag("title", class: "main-title") do %>
+        <%= image_tag("GingerbreadHouse.png")%>
+        <h1 class="hidden-on-mobile">
+          Ginger Bread House Contest
+        </h1>
+      <% end %>
+      <%= turbo_frame_tag("content", class: "content") do %>
+        <%= yield %>
+      <% end %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+
+<div class="nav-toggle pointer"
+      data-action="click->toggle#toggle"
+      data-toggle-target-schemes="nav-menu">
+  <span class="nav-toggle-icon" 
+        data-toggle-target="toggle"
+        data-toggle-schemes="nav-menu|hidden-on-mobile">
+    <%= icon "fas", "chevron-circle-up" %>
+  </span>
+  <span class="nav-toggle-icon hidden-on-mobile" 
+        data-toggle-target="toggle"
+        data-toggle-schemes="nav-menu|hidden-on-mobile">
+    <%= icon "fas", "chevron-circle-down" %>
+  </span>
+</div>
+<div class="top-nav-content hidden-on-mobile"
+        data-toggle-target="toggle"
+        data-toggle-schemes="nav-menu|hidden-on-mobile">
+  <div class="nav-menu">
+    <div class="top-nav-item">
+      <%= link_to "Home", root_path, data: { turbo: "false" } %>
+    </div>
+    <div class="top-nav-item">
+      <%= link_to "New Contest", new_contest_path, data: { turbo: "false" } %>
+    </div>
+  </div>
+  <div class="login-menu">
+    <% if logged_in? %>
+      <%= link_to( "Account", "users/account", data: { turbo: false }) %>
+      <div class="top-nav-item">
+        <%= button_to 'Logout', '/auth/logout', method: :get, data: { turbo: false }, class: "login-logout-button" %>
+      </div>
+    <% else %>
+      <div class="top-nav-item">
+        <%= button_to 'Login', '/auth/auth0', method: :post, data: {turbo: false}, class: "login-logout-button" %>
+      </div>
+    <% end %>
+  </div>
+</div>

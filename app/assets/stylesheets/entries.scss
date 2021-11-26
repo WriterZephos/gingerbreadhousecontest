@@ -1,0 +1,22 @@
+.entry-content {
+  border: 1px solid green;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+  "entry-title entry-title"
+  "entry-slide-show entry-description";
+  padding: 10px;
+}
+
+.entry-title {
+  grid-area: entry-title;
+}
+
+.entry-slide-show {
+  grid-area: entry-slide-show;
+}
+
+.entry-description {
+  grid-area: entry-description;
+}
+

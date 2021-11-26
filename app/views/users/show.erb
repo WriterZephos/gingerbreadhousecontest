@@ -1,0 +1,8 @@
+<main class="outer-text-content">
+  <h1>Account</h1>
+  <h2>Participants</h2>
+  <% @user.participants.each do |participant| %>
+    <div><%= participant.name %></div>
+  <% end %>
+  <%= render "participants/form" %>
+</main>
