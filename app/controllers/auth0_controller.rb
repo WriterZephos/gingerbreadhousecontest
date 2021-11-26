@@ -9,7 +9,12 @@ class Auth0Controller < ApplicationController
     session[:uuid] = request.env["omniauth.auth"]["uid"]
 
     # Redirect to the URL you want after successful auth
-    redirect_to :root
+
+    if current_user.participants.any?
+      redirect_to :root
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   def failure

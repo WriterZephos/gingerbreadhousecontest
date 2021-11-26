@@ -10,6 +10,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :age_limit %>
+    <%= form.number_field :age_limit %>
+  </div>
+
+  <div class="field">
     <%= form.label :vote_start_date %>
     <%= Time.use_zone("Mountain Time (US & Canada)") { form.datetime_field :vote_start_date } %>
   </div>
