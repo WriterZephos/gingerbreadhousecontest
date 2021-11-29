@@ -1,26 +1,28 @@
 <%= turbo_frame_tag(:entry_form) do %>
   <h2>Entry for <%= @participant.name %></h2>
-  <%= form_with(model: [@contest, @entry], data: {turbo: false}) do |form| %>
-    <%= form.hidden_field :contest_id %>
-    <%= form.hidden_field :participant_id %>
+  <div class="form-div">
+    <%= form_with(model: [@contest, @entry], data: {turbo: false}) do |form| %>
+      <%= form.hidden_field :contest_id %>
+      <%= form.hidden_field :participant_id %>
 
-    <div class="field">
-      <%= form.label :title %>
-      <%= form.text_field :title, required: true  %>
-    </div>
+      <div class="field">
+        <%= form.label :title %>
+        <%= form.text_field :title, required: true  %>
+      </div>
 
-    <div class="field">
-      <%= form.label :images %>
-      <%= form.file_field :images, multiple: true, required: true %><br>
-    </div>
+      <div class="field">
+        <%= form.label :images %>
+        <%= form.file_field :images, multiple: true, required: true %><br>
+      </div>
 
-    <div class="field">
-      <%= form.label :description %>
-      <%= form.rich_text_area :description %>
-    </div>
+      <div class="field">
+        <%= form.label :description %>
+        <%= form.rich_text_area :description %>
+      </div>
 
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-  <% end %>
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+  </div>
 <% end %>

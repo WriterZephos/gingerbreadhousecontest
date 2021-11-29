@@ -1,13 +1,32 @@
-<article class="entry-content" id="<%= dom_id(entry) %>" data-votes-target="entry" data-participant-id="<%= entry.participant_id %>">
+<article class="entry-content text-content" id="<%= dom_id(entry) %>" data-votes-target="entry" data-participant-id="<%= entry.participant_id %>">
   <h2 class="entry-title"><%= entry.title%></h2>
   <div class="entry-slide-show">
-    <% if entry.images.attached? %>
-      <% entry.images.each do |image| %>
-        <div>
-          <%= link_to image_tag(image, width: "100%"), url_for(image) %>
-        </div>
+    <div class="entry-slides">
+      <% if entry.images.attached? %>
+        <% entry.images.each_with_index do |image, index| %>
+          <div data-toggle-schemes="slide_<%= index %>|hidden|entry-slide-show|on" class="<%= index > 0 ? "hidden" : "" %>" data-toggle-target="toggle">
+            <%= image_tag(image, width: "100%") %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+    <nav class="entry-slide-show-controls" data-current-toggle-target-id="0">
+      <span class="entry-control entry-control-previous pointer"
+        data-action="click->toggle#toggle"
+        data-toggle-target-schemes="previous->slide|entry-slide-show">
+        <span class="entry-control-toggle-icon">
+          <%= icon "fas", "chevron-left" %>
+        </span>
+      </span>
+      <span class="entry-control entry-control-next pointer"
+        data-action="click->toggle#toggle"
+        data-toggle-target-schemes="next->slide|entry-slide-show"
+        data-max-toggle-target-id="<%= entry.images.count - 1%>">
+        <span class="entry-control-toggle-icon" >
+          <%= icon "fas", "chevron-right" %>
+        </span>
+      </span>
+    </nav>
   </div>
   <section class="entry-description"><%= entry.description %></section>
 </article>

@@ -5,6 +5,8 @@ body {
   font-weight: 500;
   margin: 0;
   padding: 0;
+  padding-bottom: 50px;
+  color: black;
 }
 
 // Fix stupid rules that changes the h1
@@ -15,20 +17,43 @@ h1 {
   margin-block-end: 0.67em;
 }
 
+a {
+  color: #6C9D30;
+  text-decoration: none;
+}
+
+footer {
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: -1;
+  font-size: 10px;
+}
+
+a:visited {
+  color: #6C9D30;
+}
+
+a:hover {
+  color: #2060A4;
+}
+
 .background{
-  // &::before {
-  //     content: ' ';
-  //     position: fixed; // instead of background-attachment
-  //     width: 100%;
-  //     height: 100%;
-  //     top: 0;
-  //     left: 0;
-  //     background-color: black;
-  //     background: url("background3.jpg") no-repeat center center;
-  //     background-size: cover;
-  //     will-change: transform; // creates a new paint layer
-  //     z-index: -1;
-  // }
+  &::before {
+      content: ' ';
+      position: fixed; // instead of background-attachment
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: black;
+      background: url("background.jpg") no-repeat center center;
+      background-size: cover;
+      will-change: transform; // creates a new paint layer
+      z-index: -1;
+  }
 }
 
 .main-grid-container {
@@ -38,14 +63,26 @@ h1 {
   "top-nav"
   "title"
   "content";
+  padding: 10px;
+  overflow: scroll;
+}
+
+.text-content {
+  background-color: white;
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: black
 }
 
 //top-nav
 .top-nav {
   grid-area: top-nav;
-  padding: 10px;
   border-radius: 15px;
   margin: 5px 0px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 5px;
 }
 
 .top-nav-content {
@@ -55,15 +92,11 @@ h1 {
 }
 
 .top-nav-content a {
-  color: green;
-}
-
-.top-nav-content a:hover {
-  background: none;
+  color: #6C9D30;
 }
 
 .top-nav-content a:visited {
-  color: green;
+  color: #6C9D30;
 }
 
 .top-nav-item {
@@ -75,7 +108,7 @@ h1 {
 }
 
 .top-nav-item a:hover{
-  color: rgba(217, 211, 211, 1);;
+  color: #2060A4;
 }
 
 .top-nav-item form {
@@ -109,7 +142,7 @@ h1 {
 
 .login-logout-button {
   grid-column: -1;
-  background-color: green;
+  background-color: #6C9D30;
   border: 1px black solid;
   color: black;
   border-radius: 5px;
@@ -118,9 +151,9 @@ h1 {
 }
 
 .login-logout-button:hover {
-  background-color: black;
-  border: 1px green solid;
-  color: green;
+  background-color: #2060A4;
+  color: white;
+  border-color: white;
 }
 
 .nav-toggle {
@@ -132,7 +165,7 @@ h1 {
 
 .nav-toggle-icon {
   font-size: 26px;
-  color: green;
+  color: #6C9D30;
 }
 
 //title
@@ -162,6 +195,8 @@ h1 {
   padding-top: 75px;
   grid-area: title;
   font-family: cursive;
+  color: white;
+  filter: drop-shadow(0px 0px 10px #2060A4);
 }
 
 .content {
@@ -191,22 +226,21 @@ h1 {
 }
 
 .outer-text-content a {
-  color: green;
+  color: #6C9D30;
 }
 
 .outer-text-content a:hover {
-  color: green;
-  background: none;
+  color: #2060A4;
 }
 
 .outer-text-content a:visited {
-  color: green;
+  color: #6C9D30;
 }
 
 //forms
 .form-div {
-  margin: 20px;
-  padding: 10px;
+  // margin: 20px;
+  // padding: 10px;
 }
 
 .form-div label {
@@ -217,27 +251,27 @@ h1 {
   margin-bottom: 10px; 
 }
 
-.form-div a{
-  background-color: #FC3B00;
-  border: 1px black solid;
-  color: black;
-  border-radius: 5px;
-  padding: 5px;
-  text-decoration: none;
-}
+// .form-div a{
+//   background-color: #6C9D30;
+//   border: 1px black solid;
+//   color: black;
+//   border-radius: 5px;
+//   padding: 5px;
+//   text-decoration: none;
+// }
 
 .form-div a:visited{
-  color: black;
+  color: #6C9D30;
 }
 
 .form-div a:hover {
-  background-color: black;
-  color: #FC3B00;
-  border: 1px #FC3B00 solid;
+  background-color: #2060A4;
+  color: white;
+  border-color: white;
 }
 
 .form-div input[type=submit]{
-  background-color: #FC3B00;
+  background-color: #6C9D30;
   border: 1px black solid;
   color: black;
   border-radius: 5px;
@@ -245,13 +279,13 @@ h1 {
 }
 
 .form-div input[type=submit]:hover {
-  background-color: black;
-  border: 1px #FC3B00 solid;
-  color: #FC3B00;
+  background-color: #2060A4;
+  color: white;
+  border-color: white;
 }
 
 .form-div input[type=button]{
-  background-color: #FC3B00;
+  background-color: #6C9D30;
   border: 1px black solid;
   color: black;
   border-radius: 5px;
@@ -259,13 +293,13 @@ h1 {
 }
 
 .form-div input[type=button]:hover {
-  background-color: black;
-  border: 1px #FC3B00 solid;
-  color: #FC3B00;
+  background-color: #2060A4;
+  color: white;
+  border-color: white;
 }
 
 .form-div input[type=file]{
-  background-color: #FC3B00;
+  background-color: #6C9D30;
   border: 1px black solid;
   color: black;
   border-radius: 5px;
@@ -273,28 +307,28 @@ h1 {
 }
 
 .form-div input[type=file]:hover {
-  background-color: black;
-  border: 1px #FC3B00 solid;
-  color: #FC3B00;
+  background-color: #2060A4;
+  color: white;
+  border-color: white;
 }
 
 .form-div input[type=text]{
-  background: none;
-  border: 1px black solid;
-  color: rgba(217, 211, 211, 1);
-  border-color: rgba(255, 255, 255, 0.8);
+  // background: none;
+  // border: 1px black solid;
+  // color: rgba(217, 211, 211, 1);
+  // border-color: rgba(255, 255, 255, 0.8);
 }
 
 .field_with_errors {
   padding: inherit !important;
   background-color: white !important;
   display: initial !important;
-  color: rgb(255, 60, 0);
+  color: red;
 }
 
 .form-errors {
   margin-bottom: 10px;
-  color: rgb(255, 60, 0);
+  color: red;
 }
 
 @media only screen and (max-width: 600px) {

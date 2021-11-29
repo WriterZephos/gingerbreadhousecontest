@@ -1,32 +1,34 @@
 <main class="contest-content outer-text-content">
-  <header>
-    <h1><%= @contest.name %> | <%= @contest.year %></h1>
+  <article class="text-content">
+    <header>
+      <h1><%= @contest.name %> | <%= @contest.year %></h1>
+      <p>Age Limit: <%= @contest.age_limit.present? ? "0 - #{@contest.age_limit}" : "All Ages" %></p>
+      <p>Voting Begins: <%= datetime_string(@contest.vote_start_date) %></p>
+      <p>Voting Ends: <%= datetime_string(@contest.vote_end_date) %></p>
 
-    <div>Voting Begins: <%= @contest.vote_start_date.in_time_zone("Mountain Time (US & Canada)").strftime("%A %b %e at %l %p") %></div>
-    <div>Voting Ends: <%= @contest.vote_end_date.in_time_zone("Mountain Time (US & Canada)").strftime("%A %b %e at %l %p") %></div>
+      <% if !logged_in? %>
+        <p>Please log in to submit an entry or vote.</p>
+      <% end %>
 
-    <% if !logged_in? %>
-      Pleas log in to submit an entry or vote.
-    <% end %>
-
-    <% if logged_in? && @contest.accepting_entries? %>
-      <%= link_to "Submit new entry", [:new, @contest, :entry], data: { turbo: false } %>
-    <% end %>
-    
-    <% if logged_in? && @contest.voting_active? %>
-      <%= link_to "Submit vote", [:new, @contest, :vote], data: { turbo: false } %>
-    <% end %>
-  </header>
-  <% if @contest.voting_ended? %>
-    <% @entries.each_with_index do |entries, rank| %>
-      <h2><%= (rank + 1).ordinalize %> Place</h2>
-      <% entries.each do |entry| %>
+      <% if logged_in? && @contest.accepting_entries? %>
+        <p><%= link_to "Submit new entry", [:new, @contest, :entry], data: { turbo: false } %></P>
+      <% end %>
+      
+      <% if logged_in? && @contest.voting_active? %>
+        <p><%= link_to "Submit vote", [:new, @contest, :vote], data: { turbo: false } %></p>
+      <% end %>
+    </header>
+    <% if @contest.voting_ended? %>
+      <% @entries.each_with_index do |entries, rank| %>
+        <h2><%= (rank + 1).ordinalize %> Place</h2>
+        <% entries.each do |entry| %>
+          <%= render "entries/entry", entry: entry %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <% @contest.entries.each do |entry| %>
         <%= render "entries/entry", entry: entry %>
       <% end %>
     <% end %>
-  <% else %>
-    <% @contest.entries.each do |entry| %>
-      <%= render "entries/entry", entry: entry %>
-    <% end %>
-  <% end %>
+  </article>
 </main>

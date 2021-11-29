@@ -1,16 +1,19 @@
-<%= form_with(model: @participant, url: [@user, @participant], data: { turbo: false }) do |form| %>
-  <%= form.hidden_field :user_id %>
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
 
-  <div class="field">
-    <%= form.label :birthday %>
-    <%= form.date_field :birthday %>
-  </div>
+<div class="form-div text-content">
+  <%= form_with(model: @participant, url: [@user, @participant], data: { turbo: false }) do |form| %>
+    <%= form.hidden_field :user_id %>
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+    <div class="field">
+      <%= form.label :birthday %>
+      <%= form.date_field :birthday %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Add Participant" %>
+    </div>
+  <% end %>
+</div>

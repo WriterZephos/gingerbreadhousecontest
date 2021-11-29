@@ -1,5 +1,5 @@
 
-<div class="nav-toggle pointer"
+<nav class="nav-toggle pointer"
       data-action="click->toggle#toggle"
       data-toggle-target-schemes="nav-menu">
   <span class="nav-toggle-icon" 
@@ -12,8 +12,8 @@
         data-toggle-schemes="nav-menu|hidden-on-mobile">
     <%= icon "fas", "chevron-circle-down" %>
   </span>
-</div>
-<div class="top-nav-content hidden-on-mobile"
+</nav>
+<nav class="top-nav-content hidden-on-mobile"
         data-toggle-target="toggle"
         data-toggle-schemes="nav-menu|hidden-on-mobile">
   <div class="nav-menu">
@@ -26,7 +26,9 @@
   </div>
   <div class="login-menu">
     <% if logged_in? %>
-      <%= link_to( "Account", "users/account", data: { turbo: false }) %>
+      <div class="top-nav-item">
+        <%= link_to( "Account", "/users/account", data: { turbo: false }) %>
+      </div>
       <div class="top-nav-item">
         <%= button_to 'Logout', '/auth/logout', method: :get, data: { turbo: false }, class: "login-logout-button" %>
       </div>
@@ -36,4 +38,4 @@
       </div>
     <% end %>
   </div>
-</div>
+</nav>

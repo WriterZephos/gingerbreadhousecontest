@@ -3,13 +3,13 @@ class VotesController < ApplicationController
   before_action :ensure_participant, only: [:select_participant, :create]
 
   def new
-    unless @contest.voting_active?
+    unless @contest.voting_active? && logged_in?
       redirect_to contest_path(@contest)
     end
   end
 
   def select_participant
-    unless @contest.voting_active?
+    unless @contest.voting_active? && logged_in?
       redirect_to contest_path(@contest)
     end
     @entries = @contest.entries.where.not(participant: @participant)
@@ -20,11 +20,11 @@ class VotesController < ApplicationController
   end
 
   def create
-    if @contest.votes.where(participant: @participant).any?
+    unless @contest.voting_active? && logged_in?
       redirect_to contest_path(@contest)
     end
 
-    unless @contest.voting_active?
+    if @contest.votes.where(participant: @participant).any?
       redirect_to contest_path(@contest)
     end
 
@@ -35,7 +35,10 @@ class VotesController < ApplicationController
     end
 
     own_entry = @contest.entries.where(participant: @participant).first
-    own_entry.rank(@participant, @entries.count + 1)
+
+    if own_entry.present?
+      own_entry.rank(@participant, @entries.count + 1)
+    end
 
     redirect_to contest_path(@contest)
   end

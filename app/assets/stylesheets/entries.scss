@@ -5,7 +5,7 @@
   grid-template-areas:
   "entry-title entry-title"
   "entry-slide-show entry-description";
-  padding: 10px;
+  column-gap: 10px;
 }
 
 .entry-title {
@@ -19,4 +19,54 @@
 .entry-description {
   grid-area: entry-description;
 }
+
+.entry-slide-show {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+  "entry-slides"
+  "slide-show-controls";
+  row-gap: 5px;
+}
+
+.entry-slides {
+  grid-area: entry-slides;
+  height: 230px;
+  display: flex;
+  align-items: center;
+  background-color: black
+}
+
+.entry-control {
+  display: inline-block;
+  text-align: center;
+  background-color: green;
+  border-radius: 15px;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+.entry-control:hover {
+  background-color: #2060A4;
+  color: white;
+  border-color: white;
+}
+
+.entry-control-previous {
+  grid-area: entry-control-previous;
+}
+
+.entry-control-next {
+  grid-area: entry-control-next;
+}
+
+.entry-slide-show-controls {
+  grid-area: slide-show-controls;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+  "entry-control-previous entry-control-next";
+  column-gap: 5px;
+}
+
 

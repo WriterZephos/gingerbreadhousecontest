@@ -67,7 +67,8 @@ export default class extends Controller {
         var toggleTargetSchemes = event.currentTarget.dataset.toggleTargetSchemes.split(" ");
         toggleTargetSchemes.forEach(targetScheme => {
             let toggleTargetTokens = targetScheme.split("|");
-            let toggleTargetId = toggleTargetTokens[0];
+            let toggleTargetId = this.parseToggleTargetId(toggleTargetTokens[0], event.currentTarget);
+            if(toggleTargetId == "skip_toggle") return;
             let toggleGroup = toggleTargetTokens[1];
     
             this.toggleTargets.forEach(target => {
@@ -86,5 +87,28 @@ export default class extends Controller {
                 })
             })
         })
+    }
+
+    parseToggleTargetId(toggleTargetId, element){
+        var tokens = toggleTargetId.split("->")
+        if(tokens[0] == "next") {
+            var currentToggleTargetId = parseInt(element.parentElement.dataset.currentToggleTargetId)
+            if(currentToggleTargetId < parseInt(element.dataset.maxToggleTargetId)) {
+                currentToggleTargetId++
+            } else {
+                return "skip_toggle"
+            }
+        } else if(tokens[0] == "previous") {
+            var currentToggleTargetId = parseInt(element.parentElement.dataset.currentToggleTargetId)
+            if(currentToggleTargetId > 0) {
+                currentToggleTargetId--
+            } else {
+                return "skip_toggle"
+            }
+        } else {
+            return toggleTargetId
+        }
+        element.parentElement.dataset.currentToggleTargetId = currentToggleTargetId;
+        return tokens[1] + "_" + currentToggleTargetId
     }
 }

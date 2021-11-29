@@ -22,11 +22,11 @@ class Contest < ApplicationRecord
   end
 
   def voting_active?
-    Time.zone.now > vote_start_date && Time.now < vote_end_date
+    Time.zone.now > vote_start_date && Time.zone.now < vote_end_date
   end
 
   def voting_ended?
-    Time.now > vote_end_date
+    Time.zone.now > vote_end_date
   end
 
   def rank_entries

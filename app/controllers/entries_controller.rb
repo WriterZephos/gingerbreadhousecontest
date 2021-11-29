@@ -3,15 +3,16 @@ class EntriesController < ApplicationController
   before_action :ensure_participant, only: [:select_participant]
   
   def new
-    unless @contest.accepting_entries?
+    unless @contest.accepting_entries? && logged_in?
       redirect_to contest_path(@contest)
     end
   end
 
   def select_participant
-    unless @contest.accepting_entries?
+    unless @contest.accepting_entries? && logged_in?
       redirect_to contest_path(@contest)
     end
+
     @entry = Entry.new(participant: @participant, contest: @contest)
     respond_to do |format|
       format.turbo_stream { render turbo_stream: turbo_stream.replace(:entry_form, partial: "entries/form") }
@@ -23,7 +24,6 @@ class EntriesController < ApplicationController
     if @entry.save
       redirect_to contest_path(@contest)
     else
-      binding.pry
     end
   end
 
