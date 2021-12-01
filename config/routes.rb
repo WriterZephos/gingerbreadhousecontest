@@ -8,12 +8,15 @@ Rails.application.routes.draw do
   get '/auth/failure' => 'auth0#failure'
   get '/auth/logout' => 'auth0#logout'
 
-  resources :contests, only: [:show, :new, :create, :edit, :update] do
-    resources :entries, only: [:new, :create] do
+  resources :contests, only: [:show, :new] do
+    post "new", to: "contests#create", as: "", on: :collection
+    resources :entries, only: [:new] do
       post "select_participant", to: "entries#select_participant", on: :collection
+      post "new", to: "entries#create", as: "", on: :collection
     end
-    resources :votes, only: [:new, :create] do
+    resources :votes, only: [:new] do
       post "select_participant", to: "votes#select_participant", on: :collection
+      post "new", to: "votes#create", as: "", on: :collection
     end
   end
   

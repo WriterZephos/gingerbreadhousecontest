@@ -1,15 +1,18 @@
 class EntriesController < ApplicationController
   before_action :ensure_contest
-  before_action :ensure_participant, only: [:select_participant]
+  before_action :ensure_participant, only: [:select_participant, :create]
   
   def new
     unless @contest.accepting_entries? && logged_in?
+      flash[:error] = "Entries are no longer accepted for #{@contest.name}."
       redirect_to contest_path(@contest)
     end
+    render :select_participant
   end
 
   def select_participant
     unless @contest.accepting_entries? && logged_in?
+      flash[:error] = "Entries are no longer accepted for #{@contest.name}."
       redirect_to contest_path(@contest)
     end
 
@@ -24,6 +27,7 @@ class EntriesController < ApplicationController
     if @entry.save
       redirect_to contest_path(@contest)
     else
+      render :new
     end
   end
 
@@ -40,6 +44,6 @@ class EntriesController < ApplicationController
   end
 
   def ensure_participant
-    @participant = Participant.find(params[:participant_id])
+    @participant = Participant.find(params[:participant_id] || create_params[:participant_id])
   end
 end

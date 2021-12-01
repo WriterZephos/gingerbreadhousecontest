@@ -3,6 +3,18 @@ class Contest < ApplicationRecord
   has_one :winning_entry, :class_name => "Entry"
   has_many :votes, through: :entries
 
+  before_validation :set_year
+  
+  validates :vote_start_date, presence: true
+  validates :vote_end_date, presence: true
+  validates :year, presence: true
+  validates :name, presence: true
+
+  def set_year
+    return if self.persisted?
+    self.year = Date.today.year
+  end
+
   def get_winners
     if votes.any?
       entries.map { |e| [e, e.votes.sum(&:rank)] }.group_by(&:last).sort_by {|k,v| k}.first.last.map(&:first)

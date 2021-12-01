@@ -2,12 +2,7 @@
   <%= form_with(model: [@contest], data: { turbo: false }) do |form| %>
     <div class="field">
       <%= form.label :name %>
-      <%= form.text_field :name %>
-    </div>
-
-    <div class="field">
-      <%= form.label :year %>
-      <%= form.text_field :year %>
+      <%= form.text_field :name, required: true %>
     </div>
 
     <div class="field">
@@ -17,12 +12,12 @@
 
     <div class="field">
       <%= form.label :vote_start_date %>
-      <%= Time.use_zone("Mountain Time (US & Canada)") { form.datetime_field :vote_start_date } %>
+      <%= Time.use_zone("Mountain Time (US & Canada)") { form.datetime_field(:vote_start_date, required: true) } %>
     </div>
 
     <div class="field">
       <%= form.label :vote_end_date %>
-      <%= form.datetime_field :vote_end_date %>
+      <%= Time.use_zone("Mountain Time (US & Canada)") { form.datetime_field(:vote_end_date, required: true) } %>
     </div>
 
     <div class="actions">

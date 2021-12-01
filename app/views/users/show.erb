@@ -1,30 +1,42 @@
-<main class="outer-text-content">
-  <section class="text-content">
-    <h1>Account</h1>
-
-    <div>
-      <p>You can change your time zone here:</p>
+<%= turbo_frame_tag :user do %>
+  <main class="outer-text-content">
+    <section class="text-content">
+      <h1>Account</h1>
+      <div>
+        <p>You can change your time zone here:</p>
+        <p>
+          <%= form_with(model: [current_user], data: { controller: "form-submitter" }) do |form| %>
+            <%= form.select(
+                :time_zone,
+                options_for_select(ActiveSupport::TimeZone.all.map { |z| [z.name, z.name] }, selected: current_user.time_zone),
+                {  },
+                data: {
+                    action: "change->form-submitter#submit"
+                }) %>
+          <% end %>
+        </p>
+      </div>
+      <h2>Participants</h2>
       <p>
-        <%= form_with(model: [current_user], data: { controller: "form-submitter" }) do |form| %>
-          <%= form.select(
-              :time_zone,
-              options_for_select(ActiveSupport::TimeZone.all.map { |z| [z.name, z.name] }, selected: current_user.time_zone),
-              {  },
-              data: {
-                  action: "change->form-submitter#submit"
-              }) %>
-        <% end %>
+        Please add all the participants in your family below (including yourself). Each participant can submit one entry in each contest they are elligible for, as well as vote once every contest.
       </p>
-    </div>
-    <h2>Participants</h2>
-    <p>
-      Please add all the participants in your family below (including yourself). Each participant can submit one entry in each contest they are elligible for, as well as vote once every contest.
-    </p>
-    <p>
-      <% @user.participants.each do |participant| %>
-        <div><%= participant.name %> Birthday: <%= participant.birthday %></div>
-      <% end %>
-    </p>
-    <%= render "participants/form" %>
-  </section>
-</main>
+      <p>
+        <table class="participants-table">
+          <thead>
+            <th class="participants-table-cell">Name</th>
+            <th class="participants-table-cell">Age</th>
+          </thead>
+          <tbody>
+            <% @user.participants.each do |participant| %>
+              <tr>
+                <td class="participants-table-cell"><%= participant.name %></td>
+                <td class="participants-table-cell"><%= participant.age %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </p>
+      <%= render "participants/form" %>
+    </section>
+  </main>
+<% end %>

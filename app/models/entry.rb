@@ -12,6 +12,8 @@ class Entry < ApplicationRecord
   validates :participant, presence: true
   validates :contest, presence: true
   validates :title, presence: true
+  validates :description, presence: true
+  validates :images, presence: true
 
   def rank(participant, rank)
     Vote.create(entry: self, participant: participant, rank: rank)

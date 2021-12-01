@@ -1,8 +1,9 @@
 <%= turbo_frame_tag(:vote_form) do %>
   <h2>Voting for <%= @participant.name %></h2>
   <div class="form-div">
-    <%= form_tag(contest_votes_path, data: { controller: "vote-form" }) do %>
+    <%= form_tag(contest_votes_path, data: { controller: "vote-form", turbo: false}) do %>
       <input type="hidden" name="participant_id" value="<%= @participant.id %>">
+      <input type="hidden" name="vote_start_time" value="<%= Time.zone.now %>">
       <% @entries.each do |entry| %>
         <%= render "entries/entry", entry: entry %>
         <div>

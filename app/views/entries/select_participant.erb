@@ -1,0 +1,18 @@
+<main class="outer-text-content">
+  <article class="text-content">
+    <%= turbo_frame_tag(:entry_form) do %>
+      <div class="form-div">
+        <%= form_tag("select_participant", data: { controller: "form-submitter" }) do %>
+          <%= select_tag :participant_id,
+            options_for_select(
+            current_user.participants.select { |p| p.can_enter_in(@contest) }
+            .map { |p| [p.name, p.id] }),
+            prompt: "Select participant", 
+            data: {
+              action: "change->form-submitter#submit"
+            } %>
+        <% end %>
+      </div>
+    <% end %>
+  </article>
+</main>

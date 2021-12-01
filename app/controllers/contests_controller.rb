@@ -9,7 +9,7 @@ class ContestsController < ApplicationController
   end
 
   def new
-    @contest = Contest.new
+    @contest ||= Contest.new
   end
 
   def create
@@ -20,23 +20,15 @@ class ContestsController < ApplicationController
       else
         @contest.entries
       end
-      render :show
+      redirect_to(@contest)
     else
-      render :new
+      render :new, status: 422
     end
-  end
-
-  def edit
-
-  end
-
-  def update
-
   end
 
 private
 
   def create_params
-    params.require(:contest).permit(:name, :year, :age_limit, :vote_start_date, :vote_end_date)
+    params.require(:contest).permit(:name, :age_limit, :vote_start_date, :vote_end_date)
   end
 end

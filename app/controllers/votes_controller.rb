@@ -21,10 +21,12 @@ class VotesController < ApplicationController
 
   def create
     unless @contest.voting_active? && logged_in?
+      flash[:error] = "Voting is closed for #{@contest.name}."
       redirect_to contest_path(@contest)
     end
 
     if @contest.votes.where(participant: @participant).any?
+      flash[:error] = "That participant has already voted in #{@contest.name}."
       redirect_to contest_path(@contest)
     end
 

@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def datetime_string(datetime)
-    "#{ datetime.strftime("%A %b %e at %l %p") }, #{current_time_zone}"
+    "#{ datetime.strftime("%A %b %e at %l:%M %p") }, #{current_time_zone}"
   end
 
   def set_time_zone(&block)
