@@ -29,6 +29,6 @@ class ContestsController < ApplicationController
 private
 
   def create_params
-    params.require(:contest).permit(:name, :age_limit, :vote_start_date, :vote_end_date)
+    params.require(:contest).permit(:name, :age_limit, :min_age_limit, :vote_start_date, :vote_end_date)
   end
 end

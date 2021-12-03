@@ -4,13 +4,18 @@ class VotesController < ApplicationController
 
   def new
     unless @contest.voting_active? && logged_in?
+      flash[:error] = "Voting is closed for #{@contest.name} or you are not logged in."
       redirect_to contest_path(@contest)
+      return
     end
+    render :select_participant
   end
 
   def select_participant
     unless @contest.voting_active? && logged_in?
+      flash[:error] = "Voting is closed for #{@contest.name} or you are not logged in."
       redirect_to contest_path(@contest)
+      return
     end
     @entries = @contest.entries.where.not(participant: @participant)
     @ranks = 1..@entries.count
@@ -21,13 +26,15 @@ class VotesController < ApplicationController
 
   def create
     unless @contest.voting_active? && logged_in?
-      flash[:error] = "Voting is closed for #{@contest.name}."
+      flash[:error] = "Voting is closed for #{@contest.name} or you are not logged in."
       redirect_to contest_path(@contest)
+      return
     end
 
     if @contest.votes.where(participant: @participant).any?
       flash[:error] = "That participant has already voted in #{@contest.name}."
       redirect_to contest_path(@contest)
+      return
     end
 
     @entries = @contest.entries.where.not(participant: @participant)

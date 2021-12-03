@@ -4,16 +4,18 @@ class EntriesController < ApplicationController
   
   def new
     unless @contest.accepting_entries? && logged_in?
-      flash[:error] = "Entries are no longer accepted for #{@contest.name}."
+      flash[:error] = "Entries are no longer accepted for #{@contest.name} or you are not logged in."
       redirect_to contest_path(@contest)
+      return
     end
     render :select_participant
   end
 
   def select_participant
     unless @contest.accepting_entries? && logged_in?
-      flash[:error] = "Entries are no longer accepted for #{@contest.name}."
+      flash[:error] = "Entries are no longer accepted for #{@contest.name} or you are not logged in."
       redirect_to contest_path(@contest)
+      return
     end
 
     @entry = Entry.new(participant: @participant, contest: @contest)
@@ -26,7 +28,9 @@ class EntriesController < ApplicationController
     @entry = Entry.new(create_params)
     if @entry.save
       redirect_to contest_path(@contest)
+      return
     else
+      flash[:error] = "There was an error."
       render :new
     end
   end

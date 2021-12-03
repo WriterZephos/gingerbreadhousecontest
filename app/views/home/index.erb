@@ -1,3 +1,12 @@
+<article class="text-content">
+  <h2>Welcome to the <%= (Date.today.year - 2019).ordinalize %> annual GingerBreadContest!</h2>
+  <p>If this is your first visit, please click the login button in the nave menu above to log in. If you are on a small screen, you will need to click the green circle to toggle the dropdown to see that nave menu.</p>
+  <p>Once you are logged in, you will be taken to your account view where you can add participants and change your time zone. Please add a participant for everyone in your family (including yourself) who will be entering or voting in any of the contests.</p>
+  <p>If you ever need to go back to your account screen, click on the Account link in the nav menu above.</p>
+  <p>To enter a contest, click on the contest link below to navigate to the contest view, and then click on the <strong>Submit New Entry</strong> link. You may only submit entries up until voting starts, so don't procrastinate!</p>
+  <p>To vote, click on the contest link below to navigate to the contest view, and then click on the <strong>Submit New Vote</strong> link. You can submit votes up until voting ends.</p>
+</article>
+
 <% Contest.all.each do |contest| %>
   <%= render "contests/contest", contest: contest%>
 <% end %>
