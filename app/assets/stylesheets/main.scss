@@ -22,7 +22,7 @@ h1, h2, h3, h4 {
 }
 
 a {
-  color: #6C9D30;
+  color: #EE1C24;
   text-decoration: none;
 }
 
@@ -37,11 +37,11 @@ footer {
 }
 
 a:visited {
-  color: #6C9D30;
+  color: #EE1C24;
 }
 
 a:hover {
-  color: #BC1B8C;
+  color: #6C9D30;
 }
 
 .background{
@@ -109,11 +109,11 @@ a:hover {
 }
 
 .top-nav-content a {
-  color: #6C9D30;
+  color: #EE1C24;
 }
 
 .top-nav-content a:visited {
-  color: #6C9D30;
+  color: #EE1C24;
 }
 
 .top-nav-item {
@@ -125,7 +125,7 @@ a:hover {
 }
 
 .top-nav-item a:hover{
-  color: #BC1B8C;
+  color: #6C9D30;
 }
 
 .top-nav-item form {
@@ -159,16 +159,16 @@ a:hover {
 
 .login-logout-button {
   grid-column: -1;
-  background-color: #6C9D30;
-  border: 1px #5A4323 solid;
-  color: #5A4323;
+  background-color: #EE1C24;
+  border: 1px white solid;
+  color: white;
   border-radius: 5px;
   padding: 5px;
   cursor: pointer;
 }
 
 .login-logout-button:hover {
-  background-color: #BC1B8C;
+  background-color: #6C9D30;
   color: #FFC10B;
   border-color: #FFC10B;
 }
@@ -182,7 +182,7 @@ a:hover {
 
 .nav-toggle-icon {
   font-size: 26px;
-  color: #6C9D30;
+  color: #EE1C24;
 }
 
 //title
@@ -241,15 +241,15 @@ a:hover {
 }
 
 .outer-text-content a {
-  color: #6C9D30;
+  color: #EE1C24;
 }
 
 .outer-text-content a:hover {
-  color: #BC1B8C;
+  color: #6C9D30;
 }
 
 .outer-text-content a:visited {
-  color: #6C9D30;
+  color: #EE1C24;
 }
 
 //forms
@@ -267,7 +267,7 @@ a:hover {
 }
 
 // .form-div a{
-//   background-color: #6C9D30;
+//   background-color: #EE1C24;
 //   border: 1px black solid;
 //   color: black;
 //   border-radius: 5px;
@@ -276,53 +276,53 @@ a:hover {
 // }
 
 .form-div a:visited{
-  color: #6C9D30;
+  color: #EE1C24;
 }
 
 .form-div a:hover {
-  background-color: #BC1B8C;
+  background-color: #6C9D30;
   color: #FFC10B;
   border-color: #FFC10B;
 }
 
 .form-div input[type=submit]{
-  background-color: #6C9D30;
-  border: 1px #5A4323 solid;
-  color: #5A4323;
+  background-color: #EE1C24;
+  border: 1px white solid;
+  color: white;
   border-radius: 5px;
   padding: 5px;
 }
 
 .form-div input[type=submit]:hover {
-  background-color: #BC1B8C;
+  background-color: #6C9D30;
   color: #FFC10B;
   border-color: #FFC10B;
 }
 
 .form-div input[type=button]{
-  background-color: #6C9D30;
-  border: 1px #5A4323 solid;
-  color: #5A4323;
+  background-color: #EE1C24;
+  border: 1px white solid;
+  color: white;
   border-radius: 5px;
   padding: 5px;
 }
 
 .form-div input[type=button]:hover {
-  background-color: #BC1B8C;
+  background-color: #6C9D30;
   color: #FFC10B;
   border-color: #FFC10B;
 }
 
 .form-div input[type=file]{
-  background-color: #6C9D30;
-  border: 1px #5A4323 solid;
-  color: #5A4323;
+  background-color: #EE1C24;
+  border: 1px white solid;
+  color: white;
   border-radius: 5px;
   padding: 5px;
 }
 
 .form-div input[type=file]:hover {
-  background-color: #BC1B8C;
+  background-color: #6C9D30;
   color: #FFC10B;
   border-color: #FFC10B;
 }

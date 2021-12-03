@@ -40,14 +40,15 @@
 .entry-control {
   display: inline-block;
   text-align: center;
-  background-color: green;
+  background-color: #5A4323;
   border-radius: 15px;
   padding: 5px;
-  border: 1px solid black;
+  color: #84B943;
+  border: 1px solid #84B943;
 }
 
 .entry-control:hover {
-  background-color: #BC1B8C;
+  background-color: pink;
   color: #FFC10B;
   border-color: #FFC10B;
 }
