@@ -70,4 +70,19 @@ class Contest < ApplicationRecord
     end
     ranks
   end
+
+  def age_range
+    range = "All ages"
+    if min_age_limit.present?
+      range = "#{min_age_limit}"
+      if age_limit.present?
+        range += " - #{age_limit}"
+      else
+        range += " and up"
+      end
+    elsif age_limit.present?
+      range = "up to #{age_limit - 1}"
+    end
+    range
+  end
 end

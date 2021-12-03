@@ -1,6 +1,6 @@
 <article class="text-content">
   <h2><%= link_to "#{ contest.year } | #{ contest.name }", contest_path(contest), data: { turbo: false } %> </h2>
-  <p>Age Limit: <%= contest.age_limit.present? ? "0 - #{contest.age_limit}" : "All Ages" %></p>
+  <p>Age Limit: <%= contest.age_range %></p>
   <p>Voting Begins: <%= datetime_string(contest.vote_start_date) %></p>
   <p>Voting Ends: <%= datetime_string(contest.vote_end_date) %></p>
   <% if contest.voting_ended? %>
