@@ -2,7 +2,7 @@
   <article class="text-content">
     <header>
       <h1><%= @contest.name %> | <%= @contest.year %></h1>
-      <p>Age Limit: <%= @contest.age_limit.present? ? "0 - #{@contest.age_limit}" : "All Ages" %></p>
+      <p>Age Limit: <%= contest.age_range %></p>
       <p>Voting Begins: <%= datetime_string(@contest.vote_start_date) %></p>
       <p>Voting Ends: <%= datetime_string(@contest.vote_end_date) %></p>
 
