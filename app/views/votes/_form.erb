@@ -5,7 +5,7 @@
       <input type="hidden" name="participant_id" value="<%= @participant.id %>">
       <input type="hidden" name="vote_start_time" value="<%= Time.zone.now %>">
       <% @entries.each do |entry| %>
-        <%= render "entries/entry", entry: entry %>
+        <%= render "entries/entry", entry: entry, contest: @contest %>
         <div>
             <div class="field">
                 <%= label_tag "Rank #{entry.title}" %><br>

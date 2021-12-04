@@ -22,7 +22,7 @@
       <% @entries.each_with_index do |entries, rank| %>
         <h2><%= (rank + 1).ordinalize %> Place</h2>
         <% entries.each do |entry| %>
-          <%= render "entries/entry", entry: entry %>
+          <%= render "entries/entry", entry: entry, contest: @contest %>
         <% end %>
       <% end %>
     <% else %>

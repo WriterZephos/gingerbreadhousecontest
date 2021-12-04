@@ -1,5 +1,5 @@
 <article class="entry-content text-content" id="<%= dom_id(entry) %>" data-votes-target="entry" data-participant-id="<%= entry.participant_id %>">
-  <h2 class="entry-title"><%= entry.title%></h2>
+  <h2 class="entry-title"><%= entry.title%><%= contest.voting_ended? ? " by #{entry.participant.name}" : "" %></h2>
   <div class="entry-slide-show">
     <div class="entry-slides">
       <% if entry.images.attached? %>
