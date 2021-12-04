@@ -3,8 +3,12 @@ class ContestsController < ApplicationController
     @contest = Contest.find(params[:id])
     @entries =  if @contest.voting_ended?
                   @contest.rank_entries
-                else
+                elsif logged_in?
+                  @contest.entries.where(participant: current_user.participants)
+                elsif @contest.voting_active?
                   @contest.entries
+                else
+                  []
                 end
   end
 

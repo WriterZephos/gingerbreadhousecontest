@@ -13,6 +13,10 @@
       <% if logged_in? && @contest.accepting_entries? %>
         <p><%= link_to "Submit new entry", [:new, @contest, :entry], data: { turbo: false } %></P>
       <% end %>
+
+      <% if @contest.accepting_entries? %>
+        <p>You can only see other families' entries after voting begins (no stealing ideas!). Until then, only your family's entries will appear below.</p>
+      <% end %>
       
       <% if logged_in? && @contest.voting_active? %>
         <p><%= link_to "Submit vote", [:new, @contest, :vote], data: { turbo: false } %></p>
@@ -26,8 +30,8 @@
         <% end %>
       <% end %>
     <% else %>
-      <% @contest.entries.each do |entry| %>
-        <%= render "entries/entry", entry: entry %>
+      <% @entries.each do |entry| %>
+        <%= render "entries/entry", entry: entry, contest: @contest %>
       <% end %>
     <% end %>
   </article>
