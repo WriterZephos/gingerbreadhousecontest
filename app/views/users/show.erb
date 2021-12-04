@@ -11,7 +11,7 @@
                 options_for_select(ActiveSupport::TimeZone.all.map { |z| [z.name, z.name] }, selected: current_user.time_zone),
                 {  },
                 data: {
-                    action: "change->form-submitter#submit"
+                  action: "change->form-submitter#submit"
                 }) %>
           <% end %>
         </p>

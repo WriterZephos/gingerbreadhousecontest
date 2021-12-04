@@ -1,5 +1,5 @@
 .entry-content {
-  border: 1px solid green;
+  border: 1px solid #2060A4;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
@@ -21,12 +21,9 @@
 }
 
 .entry-slide-show {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-areas:
-  "entry-slides"
-  "slide-show-controls";
   row-gap: 5px;
+  display: flex;
+  flex-direction: column;
 }
 
 .entry-slides {
@@ -40,15 +37,15 @@
 .entry-control {
   display: inline-block;
   text-align: center;
-  background-color: #5A4323;
   border-radius: 15px;
   padding: 5px;
-  color: #84B943;
-  border: 1px solid #84B943;
+  background-color: #EE1C24;
+  border: 1px white solid;
+  color: white;
 }
 
 .entry-control:hover {
-  background-color: pink;
+  background-color: #6C9D30;
   color: #FFC10B;
   border-color: #FFC10B;
 }
@@ -65,9 +62,10 @@
   grid-area: slide-show-controls;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-  "entry-control-previous entry-control-next";
+  grid-template-areas: "entry-control-previous entry-control-next";
   column-gap: 5px;
+  height: 25px;
+  max-height: 25px;
 }
 
 .slide {
@@ -76,6 +74,17 @@
 
 .slide img {
   max-height: 230px;
+}
+
+@media only screen and (max-width: 600px) {
+  .entry-content {
+    grid-template-areas:
+    "entry-title"
+    "entry-slide-show"
+    "entry-description";
+    row-gap: 10px;
+    grid-template-columns: 1fr;
+  }
 }
 
 

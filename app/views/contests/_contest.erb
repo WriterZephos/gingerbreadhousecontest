@@ -15,4 +15,13 @@
       Third Place: <%= contest.rank_entries.third&.map { |entry| entry.participant.name }&.join(", ") %>
     </p>
   <% end %>
+  <p>
+    <%= link_to "View Entries", contest_path(contest), data: { turbo: false } %>
+    <%= if !logged_in? then "| Please log in to submit an entry or vote." end %>
+    <% if logged_in? && (contest.accepting_entries? || contest.voting_active?) %>
+     | 
+    <% end %>
+    <%= if logged_in? && contest.accepting_entries? then link_to("Submit new entry", [:new, contest, :entry], data: { turbo: false }) end %>
+    <%= if logged_in? && contest.voting_active? then link_to("Submit vote", [:new, contest, :vote], data: { turbo: false }) end %>
+  </p>
 </article>

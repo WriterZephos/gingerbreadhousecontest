@@ -4,7 +4,7 @@
     <div class="entry-slides">
       <% if entry.images.attached? %>
         <% entry.images.each_with_index do |image, index| %>
-          <div data-toggle-schemes="slide_<%= index %>|hidden|entry-slide-show|on" class="slide<%= index > 0 ? "hidden" : "" %>" data-toggle-target="toggle">
+          <div data-toggle-schemes="slide_<%= index %>|hidden|entry-slide-show|on" class="slide <%= index > 0 ? "hidden" : "" %>" data-toggle-target="toggle">
             <%= image_tag(image, width: "100%") %>
           </div>
         <% end %>

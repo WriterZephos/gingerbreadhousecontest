@@ -8,7 +8,7 @@
         <%= render "entries/entry", entry: entry %>
         <div>
             <div class="field">
-                <%= label_tag "Rank" %><br>
+                <%= label_tag "Rank #{entry.title}" %><br>
                 <select name="entry_<%=entry.id%>_rank" data-action="vote-form#change focus->vote-form#focus" data-vote-form-target="select" required="required">
                   <option value="0">Rank this entry...</option>
                   <%= @ranks.each do |rank| %>
@@ -17,6 +17,8 @@
                 </select>
             </div>
         </div>
+        <hr>
+        <br>
       <% end %>
       <div class="actions">
         <%= button_tag "Submit My Vote", type: 'button', data: { action: "vote-form#submit" } %>

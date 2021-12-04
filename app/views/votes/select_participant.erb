@@ -1,12 +1,12 @@
 <main class="outer-text-content">
   <article class="text-content">
     <p>Please select a participant. Only participants that haven't yet voted can be selected.</P>
-    <%= turbo_frame_tag(:entry_form) do %>
+    <%= turbo_frame_tag(:vote_form) do %>
       <div class="form-div">
         <%= form_tag("select_participant", data: { controller: "form-submitter" }) do %>
           <%= select_tag :participant_id,
             options_for_select(
-            current_user.participants.select { |p| p.can_enter_in(@contest) }
+            current_user.participants.select { |p| !@contest.has_vote_from(p) }
             .map { |p| [p.name, p.id] }),
             prompt: "Select participant", 
             data: {

@@ -1,11 +1,13 @@
 <article class="text-content">
   <h2>Welcome to the <%= (Date.today.year - 2019).ordinalize %> annual Friends and Family Gingerbread House Contest!</h2>
-  <P>This year's prizes are, as always, 3D printed Ginger Bread House Competition ornaments!</p>
-  <p>If this is your first visit, please click the login button in the nave menu above to log in. If you are on a small screen, you will need to click the green circle to toggle the dropdown to see that nave menu.</p>
-  <p>Once you are logged in, you will be taken to your account view where you can add participants and change your time zone. Please add a participant for everyone in your family (including yourself) who will be entering or voting in any of the contests.</p>
-  <p>If you ever need to go back to your account screen, click on the Account link in the nav menu above.</p>
-  <p>To enter a contest, click on the contest link below to navigate to the contest view, and then click on the <strong>Submit New Entry</strong> link. You may only submit entries up until voting starts, so don't procrastinate!</p>
-  <p>To vote, click on the contest link below to navigate to the contest view, and then click on the <strong>Submit New Vote</strong> link. You can submit votes up until voting ends.</p>
+  <P>This year's prizes are once again 3D printed ornaments!</p>
+  <p>Only one person per family needs to log in, but each family will have participants under that person's account. All entry submissions and voting will be done through that person's account for each participant.</p>
+  <% unless logged_in? %>
+    <p>You may login or sign up by clicking this button:</p>
+    <%= button_to 'Login', '/auth/auth0', method: :post, data: {turbo: false}, class: "login-logout-button" %>
+    <p>If it is your first time logging in or you haven't added any participants, you will be taken to your account screen where you may do so.</p>
+  <% end %>
+  <p>All contests are listed below. Once you are logged in, you can submit entries for each participant in your family before voting begins and submit votes for each of participant in your family after voting begins.</p>
 </article>
 
 <% Contest.all.each do |contest| %>
