@@ -7,7 +7,7 @@
     <%= button_to 'Login', '/auth/auth0', method: :post, data: {turbo: false}, class: "login-logout-button" %>
     <p>If it is your first time logging in or you haven't added any participants, you will be taken to your account screen where you may do so.</p>
   <% end %>
-  <p>All contests are listed below. Once you are logged in, you can submit entries for each participant in your family before voting begins and submit votes for each of participant in your family after voting begins.</p>
+  <p>All contests are listed below. Once you are logged in, you can submit entries for each participant in your family before voting begins and submit votes for each participant in your family after voting begins.</p>
 </article>
 
 <% Contest.all.each do |contest| %>
