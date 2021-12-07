@@ -23,17 +23,21 @@
       <% end %>
       <%= turbo_frame_tag("content", class: "content") do %>
         <% if flash[:error].present? %>
-          <div class="error-text-content">
-            <span>
-              <%= flash[:error] %>
-            </span>
+          <div class="outer-text-content">
+            <div class="error-text-content">
+              <span>
+                <%= flash[:error] %>
+              </span>
+            </div>
           </div>
         <% end %>
         <% if flash[:notice].present? %>
-          <div class="notice-text-content">
-            <span>
-              <%= flash[:notice] %>
-            </span>
+          <div class="outer-text-content">
+            <div class="notice-text-content ">
+              <span>
+                <%= flash[:notice] %>
+              </span>
+            </div>
           </div>
         <% end %>
         <%= yield %>

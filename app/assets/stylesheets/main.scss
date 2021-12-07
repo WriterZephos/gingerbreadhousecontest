@@ -86,8 +86,7 @@ a:hover {
   background-color: white;
   border-radius: 15px;
   padding: 10px;
-  margin-bottom: 5px;
-  color: black;
+  margin-bottom: 10px;
   border: 2px solid #EE1C24;
   color: #EE1C24;
 }
@@ -96,10 +95,18 @@ a:hover {
   background-color: white;
   border-radius: 15px;
   padding: 10px;
-  margin-bottom: 5px;
-  color: black;
+  margin-bottom: 10px;
   border: 2px solid #6C9D30;
   color: #6C9D30;
+}
+
+.text-content {
+  background-color: white;
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: black;
+  border: 2px solid #2060A4;
 }
 
 //top-nav

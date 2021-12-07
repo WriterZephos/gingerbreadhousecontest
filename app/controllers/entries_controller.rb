@@ -35,7 +35,7 @@ class EntriesController < ApplicationController
       redirect_to contest_path(@contest)
       return
     else
-      flash[:error] = "There was an error."
+      flash.now[:error] = "There was an error."
       render :new
     end
   end
