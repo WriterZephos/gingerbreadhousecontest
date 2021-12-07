@@ -1,5 +1,5 @@
 <%= turbo_frame_tag(:entry_form) do %>
-  <h2>Entry for <%= @participant.name %></h2>
+  <h1>New Entry For <%= @participant.name %></h1>
   <div class="form-div">
     <%= form_with(model: [@contest, @entry], data: {turbo: false}) do |form| %>
       <%= form.hidden_field :contest_id %>

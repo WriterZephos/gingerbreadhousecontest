@@ -1,7 +1,8 @@
 <main class="outer-text-content">
   <article class="text-content">
-    <p>Please select a participant. Only participants that haven't yet entered and are within the age range for this contest can be selected.</P>
     <%= turbo_frame_tag(:entry_form) do %>
+      <h1>New Entry For:</h1>
+      <p>Please select a participant. Only participants that haven't yet entered and are within the age range for this contest can be selected.</P>
       <div class="form-div">
         <%= form_tag("select_participant", data: { controller: "form-submitter" }) do %>
           <%= select_tag :participant_id,

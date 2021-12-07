@@ -10,7 +10,7 @@ class VotesController < ApplicationController
     end
     @participants = current_user.participants.select { |p| !@contest.has_vote_from(p) }.map { |p| [p.name, p.id] }
     unless @participants.any?
-      flash[:error] = "You don't have any participants that haven't already voted in this contest."
+      flash.now[:error] = "You don't have any participants that haven't already voted in this contest."
     end
     render :select_participant
   end
