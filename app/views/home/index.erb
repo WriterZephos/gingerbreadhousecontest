@@ -1,6 +1,9 @@
 <article class="text-content">
   <h2>Welcome to the <%= (Date.today.year - 2019).ordinalize %> annual Friends and Family Gingerbread House Contest!</h2>
   <P>This year's prizes are once again 3D printed ornaments!</p>
+  <div class="ornament-div">
+    <%= image_tag("ornament.jpg")%>
+  </div>
   <p>Only one person per family needs to log in, but each family will have participants under that person's account. All entry submissions and voting will be done through that person's account for each participant.</p>
   <% unless logged_in? %>
     <p>You may login or sign up by clicking this button:</p>
