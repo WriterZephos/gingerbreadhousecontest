@@ -5,9 +5,7 @@
       <div class="form-div">
         <%= form_tag("select_participant", data: { controller: "form-submitter" }) do %>
           <%= select_tag :participant_id,
-            options_for_select(
-            current_user.participants.select { |p| p.can_enter_in(@contest) }
-            .map { |p| [p.name, p.id] }),
+            options_for_select(@participants),
             prompt: "Select participant", 
             data: {
               action: "change->form-submitter#submit"

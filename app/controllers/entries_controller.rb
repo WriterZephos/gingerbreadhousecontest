@@ -8,6 +8,10 @@ class EntriesController < ApplicationController
       redirect_to contest_path(@contest)
       return
     end
+    @participants = current_user.participants.select { |p| p.can_enter_in(@contest) }.map { |p| [p.name, p.id] }
+    unless @participants.any?
+      flash[:error] = "You don't have any participants that are elligible for this contest or haven't already entered."
+    end
     render :select_participant
   end
 
