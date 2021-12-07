@@ -87,8 +87,18 @@ a:hover {
   padding: 10px;
   margin-bottom: 5px;
   color: black;
-  border: 2px solid red;
-  color: red;
+  border: 2px solid #EE1C24;
+  color: #EE1C24;
+}
+
+.notice-text-content {
+  background-color: white;
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 5px;
+  color: black;
+  border: 2px solid #6C9D30;
+  color: #6C9D30;
 }
 
 //top-nav
@@ -336,12 +346,12 @@ a:hover {
   padding: inherit !important;
   background-color: white !important;
   display: initial !important;
-  color: red;
+  color: #EE1C24;
 }
 
 .form-errors {
   margin-bottom: 10px;
-  color: red;
+  color: #EE1C24;
 }
 
 @media only screen and (max-width: 600px) {

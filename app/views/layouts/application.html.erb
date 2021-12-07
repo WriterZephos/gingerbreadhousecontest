@@ -29,6 +29,13 @@
             </span>
           </div>
         <% end %>
+        <% if flash[:notice].present? %>
+          <div class="notice-text-content">
+            <span>
+              <%= flash[:notice] %>
+            </span>
+          </div>
+        <% end %>
         <%= yield %>
       <% end %>
     </div>

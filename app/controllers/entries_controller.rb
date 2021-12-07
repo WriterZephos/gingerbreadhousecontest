@@ -27,6 +27,7 @@ class EntriesController < ApplicationController
   def create
     @entry = Entry.new(create_params)
     if @entry.save
+      flash[:notice] = "Your entry was submitted successfully."
       redirect_to contest_path(@contest)
       return
     else

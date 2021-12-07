@@ -48,7 +48,7 @@ class VotesController < ApplicationController
     if own_entry.present?
       own_entry.rank(@participant, @entries.count + 1)
     end
-
+    flash[:notice] = "Your vote was submitted successfully."
     redirect_to contest_path(@contest)
   end
 

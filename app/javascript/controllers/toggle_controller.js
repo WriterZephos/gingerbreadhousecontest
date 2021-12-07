@@ -109,6 +109,7 @@ export default class extends Controller {
             return toggleTargetId
         }
         element.parentElement.dataset.currentToggleTargetId = currentToggleTargetId;
+        document.findElementById(element.parentElement.dataset.infoId).innerHtml = currentToggleTargetId
         return tokens[1] + "_" + currentToggleTargetId
     }
 }

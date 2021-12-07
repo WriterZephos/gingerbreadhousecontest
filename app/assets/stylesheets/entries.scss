@@ -37,10 +37,13 @@
 .entry-control {
   display: inline-block;
   text-align: center;
-  border-radius: 15px;
   padding: 5px;
+}
+
+.entry-control-button {
   background-color: #EE1C24;
   border: 1px white solid;
+  border-radius: 15px;
   color: white;
 }
 
@@ -54,6 +57,10 @@
   grid-area: entry-control-previous;
 }
 
+.entry-control-info {
+  grid-area: entry-controle-info;
+}
+
 .entry-control-next {
   grid-area: entry-control-next;
 }
@@ -61,8 +68,8 @@
 .entry-slide-show-controls {
   grid-area: slide-show-controls;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: "entry-control-previous entry-control-next";
+  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-areas: "entry-control-previous entry-control-info entry-control-next";
   column-gap: 5px;
   height: 25px;
   max-height: 25px;
