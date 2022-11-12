@@ -5,11 +5,17 @@
       <% if entry.images.attached? %>
         <% entry.images.each_with_index do |image, index| %>
           <div data-toggle-schemes="entry_<%= entry.id %>_slide_<%= index %>|hidden|entry-slide-show-<%= entry.id %>|on" class="slide <%= index > 0 ? "hidden" : "" %>" data-toggle-target="toggle">
-            <%= image_tag(image, width: "100%") %>
+            <a href="<%= url_for(image) %>">
+              <%= image_tag(image, width: "100%") %>
+            </a>
           </div>
         <% end %>
+
       <% end %>
     </div>
+    <p class="entry-slide-click-message">
+      (Click on image to expand)
+    </p>
     <nav class="entry-slide-show-controls" data-current-toggle-target-id="0" data-info-id="slide-info">
       <span class="entry-control entry-control-button entry-control-previous pointer"
         data-action="click->toggle#toggle"

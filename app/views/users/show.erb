@@ -21,10 +21,16 @@
         Please add all the participants in your family below (including yourself). Each participant can submit one entry in each contest they are elligible for, as well as vote once in every contest.
       </p>
       <p>
+        If you want to enter as a group, just enter your group name and the age of the oldest person in the group (groups that enter into the kid contest must all be under the maximum age).
+      </p>
+      <p>
+        If you want to enter as a group, but still want to vote individually, then create a participant for each voter as well as a participant representing the group, and make your entry using the participant representing the group.
+      </p>
+      <p>
         <table class="participants-table">
           <thead>
-            <th class="participants-table-cell">Name</th>
-            <th class="participants-table-cell">Age</th>
+            <th class="participants-table-cell">Name/Group Name</th>
+            <th class="participants-table-cell">Age/Oldest Group Member's Age</th>
           </thead>
           <tbody>
             <% @user.participants.each do |participant| %>

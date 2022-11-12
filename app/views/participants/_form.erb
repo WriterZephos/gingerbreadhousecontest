@@ -3,12 +3,12 @@
   <%= form_with(model: @participant, url: [@user, @participant]) do |form| %>
     <%= form.hidden_field :user_id %>
     <div class="field">
-      <%= form.label :name %>
+      <%= form.label :name, "Name/Group Name" %>
       <%= form.text_field :name, required: true %>
     </div>
 
     <div class="field">
-      <%= form.label :age_at_creation, "Age" %>
+      <%= form.label :age_at_creation, "Age/Oldest Group Member's Age" %>
       <%= form.number_field :age_at_creation, required: true %>
     </div>
 
